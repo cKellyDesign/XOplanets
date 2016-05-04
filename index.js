@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var multer = require('multer');
 var net = require('net');
+var Logstash = require('logstash-client');
 var request = require('request');
 var csv = require('csv-stream');
 var path = require('path');
@@ -11,8 +12,14 @@ var upload = multer({
 	dest: './uploads'
 });
 
-var app = express();
+var logstash = new Logstash({
+	type: 'udp',
+	host: '192.168.99.101',
+	port: '5001'
+});
 
+var app = express();
+// var socket = new JsonSocket(new net.Socket());
 app.use('/uploads', express.static(path.join(__dirname, './uploads')));
 
 app.get('/', function (req, res){
@@ -48,18 +55,7 @@ app.post('/import/upload', upload.single('upFile'), function (req, res, next) {
 });
 
 function forwardData (data) {
-	// console.log(data);
-	request({
-		url: 'http://192.168.99.101:8080',
-		method: 'POST',
-		json: data
-	}, function (error, response, body){
-		if (!error && response.statusCode == 200) {
-			console.log('Request post success');
-		} else if (error) {
-			console.log('Request failed - ', error);
-		}
-	});
+	logstash.send(data);
 }
 
 app.listen(9000, function(){

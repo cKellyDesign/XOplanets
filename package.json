@@ -13,6 +13,7 @@
     "csv-stream": "^0.1.3",
     "elasticsearch": "^11.0.1",
     "express": "^4.13.4",
+    "logstash-client": "^1.0.1",
     "multer": "^1.1.0",
     "request": "^2.72.0",
     "underscore": "^1.8.3"
