@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>Data Input</title>
+</head>
+<body>
+<h2>Import via CSV</h2>
+<form action="/import/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="upFile" accept="*.csv">
+    <br><br>
+    <input type="submit" value="Import">
+</form>
+
+<h2>Input via Forms</h2>
+<form action="/input" method="post" enctype="application/x-www-form-urlencoded">
+    <label for="Planet_Name">Planet Name</label><br>
+    <input type="text" name="Planet_Name" /><br><br>
+
+    <label for="Planet_Letter">Planet Letter</label><br>
+    <input type="text" name="Planet_Letter" /><br><br>
+
+    <label for="Discovery_Method">Discovery Method</label><br>
+    <input type="text" name="Discovery_Method" /><br><br>
+
+    <label for="Planet_Number">Planet Number</label><br>
+    <input type="text" name="Planet_Number" /><br><br>
+
+    <label for="Orbital_Period">Orbital Period</label><br>
+    <input type="text" name="Orbital_Period" /><br><br>
+
+    <label for="Eccentricity">Eccentricity</label><br>
+    <input type="text" name="Eccentricity" /><br><br>
+
+    <label for="Jovian_Mass">Jovian Mass</label><br>
+    <input type="text" name="Jovian_Mass" /><br><br>
+
+    <label for="Star_Distance">Star Distance</label><br>
+    <input type="text" name="Star_Distance" /><br><br>
+
+    <label for="Star_Mass">Star Mass</label><br>
+    <input type="text" name="Star_Mass" /><br><br>
+
+    <label for="Star_Type">Star Type</label><br>
+    <input type="text" name="Star_Type" /><br><br>
+
+    <label for="Star_Age">Star Age</label><br>
+    <input type="text" name="Star_Age" /><br><br>
+
+    <label for="Star_Metallicy">Star Metallicy</label><br>
+    <input type="text" name="Star_Metallicy" /><br><br>
+
+    <label for="Star_Name">Star Name</label><br>
+    <input type="text" name="Star_Name" /><br><br>
+
+    <input type="submit" value="Submit Entry">
+</form>
+</body>
+</html>
