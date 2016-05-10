@@ -14,7 +14,7 @@ var upload = multer({
 
 var logstash = new Logstash({
 	type: 'udp',
-	host: '192.168.99.101',
+	host: '192.168.99.100',
 	port: '5001'
 });
 
@@ -37,7 +37,7 @@ app.get('/import', function (req, res){
 
 app.post('/import/upload', upload.single('upFile'), function (req, res, next) {
 	if (req.file && req.file.path) {
-		// console.log(req.file);
+		console.log(req.file);
 
 		var csvStream = csv.createStream();
 		request('http://localhost:9000/uploads/' + req.file.filename).pipe(csvStream)
@@ -55,6 +55,7 @@ app.post('/import/upload', upload.single('upFile'), function (req, res, next) {
 });
 
 function forwardData (data) {
+	console.log(data);
 	logstash.send(data);
 }
 
