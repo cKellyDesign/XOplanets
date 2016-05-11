@@ -55,8 +55,17 @@ app.post('/import/upload', upload.single('upFile'), function (req, res, next) {
 });
 
 function forwardData (data) {
+	for (var prop in data) {
+		if (isNumeric(data[prop])) {
+			data[prop] = Number(data[prop]);
+		}
+	}
 	console.log(data);
 	logstash.send(data);
+}
+
+function isNumeric(num) {
+	return !isNaN(num);
 }
 
 app.listen(9000, function(){
